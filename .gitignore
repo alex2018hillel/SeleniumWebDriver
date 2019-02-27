@@ -1,0 +1,14 @@
+
+# ignore the folder and all subfolders below
+/.idea/*
+/.class/*
+/out/*
+/allure/*
+/allure-result/*
+
+# ignore the file *.iml ONLY in current project folder
+*.iml
+
+
+# ignore the folder and all subfolders below
+target/*
