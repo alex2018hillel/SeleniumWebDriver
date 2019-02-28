@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,23 +15,23 @@ public class InitialTestClass1 extends App1 {
     private String username = getDb("db_login");
     private String password = getDb("db_password");
 
-    ////private By signInButton = By.id("#id='login-form-submit'");
-    private By butonTopMenu = By.xpath("//div[@class=’aui-header-primary’]//span[text()=’Create a new issue’]");
-    private By inputIssueTypeField = By.xpath("//a[@class='aui-list-item-link aui-iconised-link'][contains(text(),'Test')]");
-    private By inputSummaryField = By.xpath("//a[@class='aui-list-item-link aui-iconised-link'][contains(text(),'Test')]");
-    private By inputDescriptionField = By.xpath("//a[@class='aui-list-item-link aui-iconised-link'][contains(text(),'Test')]");
+    private By butonTopMenu = By.xpath("//li[@id='create-menu']");
+    //private By inputIssueTypeField = By.xpath("//input[@id='issuetype-field']");
+    //private By inputIssueTypeField1 = By.xpath("//div[@id='issuetype-suggestion']//li[@id='test-52']");
+    //private By inputIssueTypeField1 = By.xpath("//div[@class='aui-list-scroll']//li[@id='test-52']");
+    //private By inputIssueTypeField = By.xpath("//select[@id='issuetype-field']/a[text()='Test']");
+    //private By inputIssueTypeField = By.xpath("//li[@id='test-18']//a[text()='Test']");
+    //private By inputIssueTypeField = By.xpath("//input[@id='issuetype-field']");
+    //private By inputIssueTypeField1 = By.xpath("//a[contains(text(),'Test')]");
+    private By inputSummaryField = By.xpath("//input[@id='summary']");
+    private By inputDescriptionField = By.xpath("//body[@id='tinymce']//p");
     private By butonCreate = By.xpath("//body[@id='tinymce']//p");
     //
     WebDriver driver;
 
     public WebDriver initializeDriver() {
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        return driver;
-    }
-
-    public WebDriver setPropertyWindow() {
-        driver.manage().window().maximize();
+      //  driver.manage().window().maximize();
         return driver;
     }
 
@@ -38,8 +39,8 @@ public class InitialTestClass1 extends App1 {
         driver = new ChromeDriver();
         String url = getDb("db_url");
         System.out.println(url);
-        //driver.get(url);
-        driver.get("http://jira.hillel.it:8080/login.jsp");
+        driver.get(url);
+        //driver.get("http://jira.hillel.it:8080/login.jsp");
         driver.manage().window().maximize();
     }
 
@@ -51,12 +52,9 @@ public class InitialTestClass1 extends App1 {
         }
     }
     //driver, signInButton
-    WebDriver signIn(WebDriver driver, By locator) {
-        driver.findElement(locator).click();
-        return driver;
-    }
-
-
+    //WebDriver signIn(WebDriver driver, By locator) {
+     //   driver.findElement(locator).click();
+     //   return driver;}
 
     WebDriver inputText() {
         driver.findElement(nameField).sendKeys(username, Keys.ENTER);
@@ -84,12 +82,21 @@ public class InitialTestClass1 extends App1 {
     }
 
     void inputIssueType() {
-        driver.findElement(inputIssueTypeField).click();   //sendKeys(username, Keys.ENTER);
+        //driver.findElement(inputIssueTypeField).sendKeys("Te");
+        ///////////////////driver.findElement(inputIssueTypeField).click();
+        //delay(1000);
+        //driver.findElement(inputIssueTypeField1).click();
+
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("issuetype-field");
+        //driver.findElement(By.id("test-52")).click();
+        driver.findElement(By.linkText("Test")).click();
+        //driver.findElement(By.xpath("//*[contains(text(), 'Test')]").click();
     }
 
     void inputSummary() {
         final String nameSummary = "QA-7";
-        driver.findElement(inputSummaryField).sendKeys(nameSummary, Keys.ENTER);
+        driver.findElement(inputSummaryField).sendKeys(nameSummary);  //, Keys.ENTER
     }
 
     void inputDescription() {
