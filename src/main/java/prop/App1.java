@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.Properties;
 
 public class App1 {
-
     public static String getDb(String key) {
 
         FileInputStream fis;
@@ -25,6 +24,7 @@ public class App1 {
         }
         return prop.getProperty(key);
     }
+
 }
 
 

@@ -1,43 +1,55 @@
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
+import prop.App2;
+import prop.SettingsDriver;
 import static org.testng.Assert.assertEquals;
 
-public class CreateNewIssueTest extends InitialTestClass1 {
+public class CreateNewIssueTest extends App2 {
 
-    private String expectedPageJira = "System Dashboard - Hillel IT School JIRA";
+    private String password = getDb("db_password");
+    private String username = getDb("db_login");
+    private String url = getDb("db_url");
+    //private String expectedPageJira = "System Dashboard - Hillel IT School JIRA";
 
     @BeforeMethod
     public void setup() {
-        initializeDriver();
+        SettingsDriver driver = new SettingsDriver();
+        driver.initializeDriver();
     }
 
-    @Test
+    @Test(description = "Login JIRA")
     public void loginTestJira() {
-        open();
-        inputText();
-        inputPassword();
-        delay(2000);
-        String actualTitle = actTitle();
+        LoginPage loginJira = new LoginPage();
+
+        loginJira.open(url);
+        loginJira.inputText(username);
+        loginJira.inputPassword(password);
+        delay(4000);
+        String actualTitle = loginJira.actTitle();
+        System.out.println(loginJira.expTitle());
         System.out.println(actualTitle);
-        String expectedResultText = expectedPageJira;
-        delay(3000);
-        assertEquals(actualTitle, expectedResultText);
+        assertEquals(actualTitle, loginJira.expTitle());
 
-        clickTopMenu();
-        delay(3000);
-        inputIssueType();
-        inputSummary();
-        inputDescription();
-        clickCreate();
+    }
+    @Test(description = "Issure JIRA")
+    public void createIssueJira() {
+        IssuePage issueJira = new IssuePage();
 
+        issueJira.clickTopMenu();
+        delay(3000);
+        issueJira.inputIssueType();
+        issueJira.inputSummary();
+        issueJira.inputDescription();
+        issueJira.clickCreate();
     }
 
     @AfterMethod
     public void closeDown() {
-        delay(6000);
-        closeDriver();
+        SettingsDriver driver = new SettingsDriver();
+
+        delay(3000);
+        driver.closeDriver();
     }
 
 }
