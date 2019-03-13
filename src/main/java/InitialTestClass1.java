@@ -1,12 +1,10 @@
-import prop.App1;
-
-public class InitialTestClass1 extends App1 {
+public class InitialTestClass1 {
 
    /* private By nameField = By.xpath("//*[@id='login-form-username']");
 
     private By passwordField = By.xpath("//*[@id='login-form-password']");
-    private String username = getDb("db_login");
-    private String password = getDb("db_password");*/
+    private String username = getPropertyValue("db_login");
+    private String password = getPropertyValue("db_password");*/
 
     //private By inputIssueTypeField = By.xpath("//input[@id='issuetype-field']");
     //private By inputIssueTypeField1 = By.xpath("//div[@id='issuetype-suggestion']//li[@id='test-52']");

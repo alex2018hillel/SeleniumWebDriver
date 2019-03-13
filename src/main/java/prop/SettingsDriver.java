@@ -3,7 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SettingsDriver {
-    WebDriver driver;
+    private WebDriver driver;
 
     public void  initializeDriver() {
         driver = new ChromeDriver();

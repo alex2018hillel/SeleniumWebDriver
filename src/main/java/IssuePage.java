@@ -1,18 +1,18 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class IssuePage {
-    private By butonTopMenu = By.xpath("//li[@id='create-menu']");
+class IssuePage {
+    private By buttonTopMenu = By.xpath("//li[@id='create-menu']");
     private By inputSummaryField = By.xpath("//input[@id='summary']");
     private By inputDescriptionField = By.xpath("//body[@id='tinymce']//p");
-    private By butonCreate = By.xpath("//body[@id='tinymce']//p");
+    private By buttonCreate = By.xpath("//body[@id='tinymce']//p");
 
-
-    WebDriver driver;
+    private WebDriver driver;
 
     void clickTopMenu() {
-        driver.findElement(butonTopMenu).click();
+        driver.findElement(buttonTopMenu).click();
     }
 
     void inputIssueType() {
@@ -20,13 +20,25 @@ public class IssuePage {
         ///////////////////driver.findElement(inputIssueTypeField).click();
         //delay(1000);
         //driver.findElement(inputIssueTypeField1).click();
-        driver.findElement(By.id("issuetype-field")).click();
-        driver.switchTo().frame("menu");
-        driver.findElement(By.linkText("Операции с нац. валютой")).click();
+        driver.findElement(By.id("issuetype-field")).sendKeys("Test", Keys.ENTER);
+        //driver.switchTo().frame("menu");
+        driver.findElement(By.linkText("Test")).click();
+//driver.findElement(By.id("issuetype-field")).click();
+//        driver.switchTo().frame("menu");
+//        driver.findElement(By.linkText("Операции с нац. валютой")).click();
 
-      //  JavascriptExecutor js = (JavascriptExecutor)driver;
-      //  js.executeScript("aui-list-item-link aui-iconised-link"); //"aui-list-item-link aui-iconised-link"
-      //  driver.findElement(By.tagName("a")).click();
+        ////DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+
+        ////capabilities.setCapability(CapabilityType.BROWSER_NAME, "IE");
+        ////capabilities.setCapability(InternetExplorerDriver.
+        //// INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+
+
+         JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("aui-list-item-link aui-iconised-link"); //"aui-list-item-link aui-iconised-link"
+        driver.findElement(By.tagName("a")).click();
+
+
         //js.executeScript("issuetype-field");
         //driver.findElement(By.id("test-52")).click();
         //driver.findElement(By.linkText("aui-list-item-link aui-iconised-link")).click();
@@ -44,8 +56,7 @@ public class IssuePage {
     }
 
     void clickCreate() {
-        driver.findElement(butonCreate).click();
+        driver.findElement(buttonCreate).click();
     }
-
 
 }

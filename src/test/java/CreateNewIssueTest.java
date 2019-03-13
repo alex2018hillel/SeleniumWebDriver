@@ -1,43 +1,40 @@
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import prop.App2;
-import prop.SettingsDriver;
+import prop.PropertyReader;
+import prop.Waitings;
+
 import static org.testng.Assert.assertEquals;
 
-public class CreateNewIssueTest extends App2 {
-
-    private String password = getDb("db_password");
-    private String username = getDb("db_login");
-    private String url = getDb("db_url");
-    //private String expectedPageJira = "System Dashboard - Hillel IT School JIRA";
+public class CreateNewIssueTest {
+    private LoginPage loginPage = new LoginPage();
+    private IssuePage issueJira = new IssuePage();
+    private String password = PropertyReader.getPropertyValue("password");
+    private String username = PropertyReader.getPropertyValue("login");
+    private String url = PropertyReader.getPropertyValue("url");
 
     @BeforeMethod
     public void setup() {
-        SettingsDriver driver = new SettingsDriver();
-        driver.initializeDriver();
+        loginPage.initializeDriver();
     }
 
     @Test(description = "Login JIRA")
     public void loginTestJira() {
-        LoginPage loginJira = new LoginPage();
-
-        loginJira.open(url);
-        loginJira.inputText(username);
-        loginJira.inputPassword(password);
-        delay(4000);
-        String actualTitle = loginJira.actTitle();
-        System.out.println(loginJira.expTitle());
+        loginPage.open(url);
+        loginPage.inputUserName(username);
+        loginPage.inputPassword(password);
+        Waitings.delay(4000);
+        String actualTitle = loginPage.actTitle();
+        System.out.println(loginPage.expTitle());
         System.out.println(actualTitle);
-        assertEquals(actualTitle, loginJira.expTitle());
+        assertEquals(actualTitle, loginPage.expTitle());
 
     }
     @Test(description = "Issure JIRA")
     public void createIssueJira() {
-        IssuePage issueJira = new IssuePage();
-
+        Waitings.delay(4000);
         issueJira.clickTopMenu();
-        delay(3000);
+        Waitings.delay(4000);
         issueJira.inputIssueType();
         issueJira.inputSummary();
         issueJira.inputDescription();
@@ -46,10 +43,8 @@ public class CreateNewIssueTest extends App2 {
 
     @AfterMethod
     public void closeDown() {
-        SettingsDriver driver = new SettingsDriver();
-
-        delay(3000);
-        driver.closeDriver();
+        Waitings.delay(4000);
+        loginPage.closeDriver();
     }
 
 }
