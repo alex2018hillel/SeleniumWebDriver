@@ -10,11 +10,11 @@ import java.util.concurrent.TimeUnit;
     private By passwordField = By.xpath("//*[@id='login-form-password']");
     final String expectedResultText = "System Dashboard - Hillel IT School JIRA";
 
-    public WebDriver driver;
+    WebDriver driver;
 
     void  initializeDriver() {
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
     }
 
     void open(String url) {
