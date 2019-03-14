@@ -1,11 +1,17 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 
-class IssuePage extends LoginPage {
+class IssuePage  {
+    private WebDriver driver;
     private By buttonTopMenu = By.xpath("//li[@id='create-menu']");
     private By inputSummaryField = By.xpath("//input[@id='summary']");
     private By inputDescriptionField = By.xpath("//body[@id='tinymce']//p");
     private By buttonCreate = By.xpath("//body[@id='tinymce']//p");
+
+    public IssuePage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     void clickTopMenu() {
         driver.findElement(buttonTopMenu).click();

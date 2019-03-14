@@ -1,17 +1,25 @@
-import org.apache.bcel.generic.Select;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ChangeAvatar extends LoginPage {
+public class ChangeAvatar {
     private By buttonUser = By.xpath("//a[@id='header-details-user-fullname']");
     //private By buttonUser = By.id("header-details-user-fullname");
     //private By buttonUser = By.xpath("//a[@title='User profile for Alex_Tropp']");
     private By userMenu = By.xpath("//a[@id='view_profile']");
     private By avatar = By.xpath("//div[@id='details-profile-fragment']//div[@class='mod-content']//li//button[@id='details-user-avatar-trigger']");
     private By chooseFile = By.xpath("//li[@title='Select this avatar']//button[@id='select-avatar-button']");
+
+    WebDriver driver;
+
+
+    public ChangeAvatar(WebDriver driver) {
+        this.driver = driver;
+    }
+
 
     void clickButtonUser() {
         driver.findElement(buttonUser).click();

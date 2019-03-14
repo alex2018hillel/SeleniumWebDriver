@@ -1,3 +1,5 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -7,14 +9,17 @@ import prop.Waitings;
 import static org.testng.Assert.assertEquals;
 
 public class LoginTest {
-    private LoginPage loginPage = new LoginPage();
+    private LoginPage loginPage;// = new LoginPage();
     private String password = PropertyReader.getPropertyValue("password");
     private String username = PropertyReader.getPropertyValue("login");
     private String url = PropertyReader.getPropertyValue("url");
 
+    private WebDriver driver;
+
     @BeforeMethod
     public void initialize() {
-        loginPage.initializeDriver();
+        driver = new ChromeDriver();
+        loginPage = new LoginPage(driver);
     }
 
     @Test(description = "Login JIRA")
