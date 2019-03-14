@@ -1,7 +1,7 @@
 import org.apache.bcel.generic.Select;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,10 +10,8 @@ public class ChangeAvatar extends LoginPage {
     //private By buttonUser = By.id("header-details-user-fullname");
     //private By buttonUser = By.xpath("//a[@title='User profile for Alex_Tropp']");
     private By userMenu = By.xpath("//a[@id='view_profile']");
-    //private By avatar = By.xpath("//div[@id='details-profile-fragment']//div[@class='mod-content']//li//button[@id='details-user-avatar-trigger']");
-    private By avatar = By.xpath("/html[1]/body[1]/div[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/ul[1]/li[1]/dl[1]/dd[1]/div[1]/button[1]");
-    private By chooseFile = By.xpath("//a[@id='jira-avatar-uploader']");
-    //private By chooseFile = By.xpath("//input[@name='avatar']");
+    private By avatar = By.xpath("//div[@id='details-profile-fragment']//div[@class='mod-content']//li//button[@id='details-user-avatar-trigger']");
+    private By chooseFile = By.xpath("//li[@title='Select this avatar']//button[@id='select-avatar-button']");
 
     void clickButtonUser() {
         driver.findElement(buttonUser).click();
@@ -30,16 +28,17 @@ public class ChangeAvatar extends LoginPage {
         String alertMessage= alert.getText();
         alert.accept();
         System.out.println("Alert msg is : "+alertMessage);
-        Alert wait = (new WebDriverWait(driver, 10))  //
+        Alert wait = (new WebDriverWait(driver, 5))  // как дожлаться алерта?
                 .until(ExpectedConditions.alertIsPresent());
     }
 
     void chooseFileButton() {
-
-        driver.switchTo().alert().accept();
-        //driver.findElement(chooseFile).click();
+        WebElement element=driver.findElement(chooseFile);
+        element.click();
+        //Actions.moveToElement(driver.findElement(chooseFile).click());
+        //Actions click(WebElement);
+        //driver.switchTo().alert().accept();
     }
-
 }
 
 
