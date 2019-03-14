@@ -4,10 +4,13 @@ import org.testng.annotations.Test;
 import prop.PropertyReader;
 import prop.Waitings;
 
+import java.awt.*;
+
 import static org.testng.Assert.assertEquals;
 
-public class LogoutTest {
+public class ChangeAvatarTest {
     private LoginPage loginPage = new LoginPage();
+    private ChangeAvatar changeAvatar = new ChangeAvatar();
     private String password = PropertyReader.getPropertyValue("password");
     private String username = PropertyReader.getPropertyValue("login");
     private String url = PropertyReader.getPropertyValue("url");
@@ -17,8 +20,8 @@ public class LogoutTest {
         loginPage.initializeDriver();
     }
 
-    @Test
-    public void logoutTestJira() {
+    @Test(description = "loginJira")
+    public void loginTestJira() {
         loginPage.open(url);
         loginPage.inputUserName(username);
         loginPage.inputPassword(password);
@@ -28,21 +31,25 @@ public class LogoutTest {
         System.out.println(actualTitle);
         assertEquals(actualTitle, loginPage.expTitle());
 
-        //Select dropdown = new Select(driver.findElement(By.id("header-details-user-fullname")));
-        //dropdown.selectByVisibleText("Log Out");      //dropdown.selectByIndex(1);
+    }
+    @Test(description = "ChangeAvatar")
+    public void changeAvatar() throws AWTException {
+        Waitings.delay(5000);
+        changeAvatar.clickButtonUser();
+        Waitings.delay(3000);
+                                   //changeAvatar.clickUserMenu();
+        Robot robot = new Robot();
+        robot.mouseMove(-10, -30);
+        robot.delay(1500);
+
+        changeAvatar.clickAvatar();
+        changeAvatar.chooseFileButton();
+
     }
 
     @AfterMethod
     public void closeDown() {
-
+        loginPage.closeDriver();
     }
+
 }
-
-
-
-//private String url = "http://jira.hillel.it:8080/login.jsp";
-//private By nameField = By.xpath("//*[@id=\"login-form-username\"]");
-//private By passwordField = By.xpath("//*[@id=\"login-form-password\"]");
-//private By signInButton = By.id("id=login-form-submit"); //id="login-form-submit"
-//private String username = "Alex_Tropp";
-//private String password = "Alex_Tropp1";

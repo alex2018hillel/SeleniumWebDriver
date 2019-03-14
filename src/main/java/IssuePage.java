@@ -1,15 +1,11 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 
-class IssuePage {
+class IssuePage extends LoginPage {
     private By buttonTopMenu = By.xpath("//li[@id='create-menu']");
     private By inputSummaryField = By.xpath("//input[@id='summary']");
     private By inputDescriptionField = By.xpath("//body[@id='tinymce']//p");
     private By buttonCreate = By.xpath("//body[@id='tinymce']//p");
-
-    private WebDriver driver;
 
     void clickTopMenu() {
         driver.findElement(buttonTopMenu).click();
@@ -34,9 +30,9 @@ class IssuePage {
         //// INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
 
 
-         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("aui-list-item-link aui-iconised-link"); //"aui-list-item-link aui-iconised-link"
-        driver.findElement(By.tagName("a")).click();
+      //   JavascriptExecutor js = (JavascriptExecutor)driver;
+      //  js.executeScript("aui-list-item-link aui-iconised-link"); //"aui-list-item-link aui-iconised-link"
+      //  driver.findElement(By.tagName("a")).click();
 
 
         //js.executeScript("issuetype-field");

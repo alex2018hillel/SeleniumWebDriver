@@ -5,12 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-class LoginPage {
+ class LoginPage {
     private By nameField = By.xpath("//*[@id='login-form-username']");
     private By passwordField = By.xpath("//*[@id='login-form-password']");
     final String expectedResultText = "System Dashboard - Hillel IT School JIRA";
 
-    private WebDriver driver;
+    public WebDriver driver;
 
     void  initializeDriver() {
         driver = new ChromeDriver();
@@ -40,7 +40,7 @@ class LoginPage {
         return expectedResultText;
     }
 
-    public void closeDriver() {
+     void closeDriver() {
         driver.close();
     }
 }
