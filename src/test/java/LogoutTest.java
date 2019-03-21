@@ -1,11 +1,6 @@
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import prop.PropertyReader;
-import prop.Waitings;
-
-import static org.testng.Assert.assertEquals;
 
 public class LogoutTest {
     private LoginPage loginPage;
@@ -20,7 +15,8 @@ public class LogoutTest {
         loginPage = new LoginPage(driver);
     }
 
-    @Test
+
+    /*@Test
     public void logoutTestJira() {
         loginPage.open(url);
         loginPage.inputUserName(username);
@@ -38,7 +34,7 @@ public class LogoutTest {
     @AfterMethod
     public void closeDown() {
 
-    }
+    }*/
 }
 
 
@@ -49,3 +45,11 @@ public class LogoutTest {
 //private By signInButton = By.id("id=login-form-submit"); //id="login-form-submit"
 //private String username = "Alex_Tropp";
 //private String password = "Alex_Tropp1";
+
+//<dependency>
+//<groupId>org.slf4j</groupId>
+//<artifactId>slf4j-simple</artifactId>
+//<version>1.6.4</version>
+//</dependency>
+
+//<parameter name="configFile" value="app.properties"></parameter>
