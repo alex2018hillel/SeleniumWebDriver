@@ -1,3 +1,5 @@
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -6,6 +8,10 @@ import org.testng.annotations.Test;
 import prop.PropertyReader;
 import prop.Waitings;
 
+import java.io.File;
+import java.io.IOException;
+
+import static org.openqa.selenium.OutputType.FILE;
 import static org.testng.Assert.assertEquals;
 
 public class LoginTest {
@@ -32,6 +38,15 @@ public class LoginTest {
         System.out.println(loginPage.expTitle());
         System.out.println(actualTitle);
         assertEquals(actualTitle, loginPage.expTitle());
+
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(FILE);
+        try {
+
+            FileUtils.copyFile(scrFile, new File("C:\\MyScreenShot.png"));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @AfterMethod
