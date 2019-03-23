@@ -2,11 +2,13 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class ChangeAvatar {
 
@@ -16,13 +18,14 @@ public class ChangeAvatar {
     private By avatar = By.xpath("//button[@id='details-user-avatar-trigger']");
     private By chooseFile = By.xpath("//input[@id='jira-avatar-uploader']");
     private By newAvatar = By.xpath("(//button[@id='select-avatar-button'])[21]");
+    private By confirm = By.xpath("//input[@type='submit']");
+    private By userAvatarButton = By.xpath("//button[@id='select-avatar-button']");
 
     WebDriver driver;
 
     public ChangeAvatar( WebDriver driver) { //
         this.driver = driver;
     }
-
     void clickButtonUser() {
         driver.findElement(buttonUser).click();
     }
@@ -32,19 +35,14 @@ public class ChangeAvatar {
     void clickAvatar() {
         driver.findElement(avatar).click();
     }
-           //File upload by Robot Class
-    public void uploadFileWithRobot () {
 
-        String imagePath;   // = "C:\\maven/small.jpg";
+    public void uploadFileWithRobot () {
+        String imagePath;
         imagePath = System.getProperty("user.home")+"\\Images\\small.jpg";
         System.out.println(imagePath);
 
-      //  StringSelection stringSelection = new StringSelection(imagePath);
-      //  Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-       // clipboard.setContents(stringSelection, null);
-
-       // System.out.println(stringSelection);
-       // System.out.println(clipboard);
+        WebElement fileInput = driver.findElement(chooseFile);
+        fileInput.sendKeys(imagePath);
 
         Robot robot = null;
         try {
@@ -56,22 +54,19 @@ public class ChangeAvatar {
         robot.delay(200);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(500);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(500);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_INSERT);
-        robot.keyRelease(KeyEvent.VK_INSERT);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(500);
-        int a = 0;
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(150);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        //List<WebElement> allElements = driver.findElements(By.xpath("//button[@id='select-avatar-button']"));
-        //String pathAvatar = allElements.get(allElements.size()-1).getText();
-        //System.out.println(pathAvatar);
+        robot.delay(4000);
+
+        WebElement element = driver.findElement(confirm);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element, 1, 1).click().build().perform();
+        robot.delay(2000);
+
+        List<WebElement> allElements = driver.findElements(userAvatarButton);
+        int size = allElements.size();
+
+        WebElement avatarButton = driver.findElement(By.xpath("(//button[@id='select-avatar-button'])["+ size +"]"));
+        actions.moveToElement(avatarButton, 1, 1).click().build().perform();
+        robot.delay(2000);
     }
 
     public void clickNewAvatar() {
@@ -107,5 +102,38 @@ public class ChangeAvatar {
 // driver.findElement(By.id("issuetype-field")).sendKeys("Test", Keys.ENTER);
 //driver.switchTo().frame("menu");
 //  driver.findElement(By.linkText("Test")).click();
-
 // }
+
+//WebElement element_p = (new WebDriverWait(driver, 3))
+//        .until(ExpectedConditions.visibilityOfElementLocated(By
+//                .xpath("//input[@id='jira-avatar-uploader']")));
+//element_p.sendKeys(Keys.ENTER);
+//element_p.sendKeys(imagePath);
+
+//  StringSelection stringSelection = new StringSelection(imagePath);
+//  Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+// clipboard.setContents(stringSelection, null);
+
+// System.out.println(stringSelection);
+// System.out.println(clipboard);
+
+// robot.keyPress(KeyEvent.VK_ENTER);
+//  robot.keyRelease(KeyEvent.VK_ENTER);
+//  robot.delay(500);
+//driver.inputFileElement
+//robot.keyPress(KeyEvent.VK_ENTER);
+//robot.keyRelease(KeyEvent.VK_ENTER);
+//robot.delay(500);
+//robot.keyPress(KeyEvent.VK_CONTROL);
+//robot.keyPress(KeyEvent.VK_INSERT);
+//robot.keyRelease(KeyEvent.VK_INSERT);
+//robot.keyRelease(KeyEvent.VK_CONTROL);
+
+// actions.click(findElement(By.xpath("//input[@type='submit']"));
+//actions.keyDown(Keys.CONTROL);
+//  actions.sendKeys("v");
+
+//String pathAvatar = allElements.get(allElements.size()-1).getText();
+
+//driver.findElement(By.xpath("//input[@type='submit']")).click();
+//driver.switchTo().alert().accept();

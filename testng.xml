@@ -9,7 +9,8 @@
     <test name="Login" group-by-instances="true" verbose="3">
 
         <classes>
-            <class name="LoginTest" />
+
+            <class name="ChangeAvatarTest" />
         </classes>
     </test>
 </suite>
