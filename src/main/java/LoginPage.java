@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
  class LoginPage {
     private By nameField = By.xpath("//*[@id='login-form-username']");
     private By passwordField = By.xpath("//*[@id='login-form-password']");
-    final String expectedResultText = "System Dashboard1111 - Hillel IT School JIRA";
+    final String expectedResultText = "System Dashboard - Hillel IT School JIRA";
 
     WebDriver driver;
 

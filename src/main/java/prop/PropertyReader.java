@@ -7,7 +7,7 @@ public class PropertyReader {
 
     public static String getPropertyValue(String key) {
 
-        FileInputStream fis;
+        FileInputStream fis  =  null;
         Properties prop = new Properties();
 
         try {

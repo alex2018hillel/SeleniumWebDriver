@@ -72,3 +72,9 @@ public class CreateNewIssueTest {
 //private By headNameField = By.xpath("//*[@id=\"summary\"]");
 // private By descriptionField = By.xpath("//*[@id=\"create_link\"]");
 // private By createIssueSubmitButton = By.xpath("//*[@id=\"create-issue-submit\"]");
+
+//<scope>test</scope>     pom
+
+//<classes>
+//            <class name="UseParameters" />
+//        </classes>

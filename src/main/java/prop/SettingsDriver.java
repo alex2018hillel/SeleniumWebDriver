@@ -1,14 +1,9 @@
 package prop;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SettingsDriver {
-    private WebDriver driver;
+    private static WebDriver driver = null;
 
-    public void  initializeDriver() {
-        driver = new ChromeDriver();
-       // return driver;
-    }
     public void closeDriver() {
         driver.close();
     }
@@ -19,3 +14,7 @@ public class SettingsDriver {
 
 
 
+//   public void  initializeDriver() {
+//      driver = new ChromeDriver();
+//      return driver;
+//    }
