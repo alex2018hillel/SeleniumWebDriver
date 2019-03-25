@@ -6,7 +6,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import prop.PropertyReader;
-import prop.SettingsDriver;
 import prop.Waitings;
 import utils.DriverManager;
 
@@ -19,7 +18,7 @@ import static org.testng.Assert.assertEquals;
 
 public class LoginTest {
     private LoginPage loginPage;
-    private SettingsDriver settingsDriver;
+    //private SettingsDriver settingsDriver;
     private String password = PropertyReader.getPropertyValue("password");
     private String username = PropertyReader.getPropertyValue("login");
     private String url = PropertyReader.getPropertyValue("url");
@@ -28,8 +27,7 @@ public class LoginTest {
 
     @BeforeMethod
     public void initialize() {
-     driver = DriverManager.getDriver();
-        //driver = new ChromeDriver();
+     driver = DriverManager.getDriver();     //driver = new ChromeDriver();
      loginPage = new LoginPage(driver);
 
     }
@@ -43,7 +41,7 @@ public class LoginTest {
         String actualTitle = loginPage.actTitle();
         System.out.println(loginPage.expTitle());
         System.out.println(actualTitle);
-        assertEquals(actualTitle, loginPage.expTitle());
+
 
         if (!actualTitle.equals(loginPage.expTitle())) {
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -54,12 +52,12 @@ public class LoginTest {
                 e.printStackTrace();
             }
         }
+        assertEquals(actualTitle, loginPage.expTitle());
     }
 
     @AfterMethod
     public void closeDown() {
         Waitings.delay(3000);
-        //loginPage.closeDriver();
         DriverManager.closeDriver();
     }
 }

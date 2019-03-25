@@ -10,7 +10,7 @@
 
         <classes>
 
-            <class name="ChangeAvatarTest" />
+            <class name="LoginTest" />
         </classes>
     </test>
 </suite>
