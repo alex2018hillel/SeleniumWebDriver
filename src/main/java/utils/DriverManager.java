@@ -7,7 +7,6 @@ public class DriverManager {
     private static WebDriver driver = null;
 
     public static void initDriver() {
-        //System.setProperty("webdriver.chrome.driver", PropertyReader.getPropertyValue("C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2018.3.4\\chromedriver.exe"));
         System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2018.3.4\\chromedriver.exe");
         driver = new ChromeDriver();
     }
@@ -18,3 +17,22 @@ public class DriverManager {
         driver.close();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//System.setProperty("webdriver.chrome.driver", PropertyReader.getPropertyValue("C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2018.3.4\\chromedriver.exe"));

@@ -22,8 +22,8 @@ public class ChangeAvatarTest {
         loginPage = new LoginPage(driver);
         changeAvatar = new ChangeAvatar(driver);
     }
-    @Test
-    public void changeAvatarTest() {
+    @Test//(groups = {"smoke"})
+    public void loginTest() {
         loginPage.open(url);
         loginPage.inputUserName(username);
         loginPage.inputPassword(password);
@@ -32,6 +32,10 @@ public class ChangeAvatarTest {
         System.out.println(loginPage.expTitle());
         System.out.println(actualTitle);
         assertEquals(actualTitle, loginPage.expTitle());
+    }
+    @Test//(groups = {"feature"})
+    public void changeAvatarTest() {
+        System.out.println("===  Change Avatar Test  === ");
 
         Waitings.delay(5000);
         changeAvatar.clickButtonUser();

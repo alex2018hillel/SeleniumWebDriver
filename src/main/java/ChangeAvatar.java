@@ -14,14 +14,13 @@ public class ChangeAvatar {
 
     private By buttonUser = By.xpath("//a[@id='header-details-user-fullname']");
     private By userMenu = By.id("view_profile");
-    //private By userMenu = By.xpath("//a[@id='view_profile']");
     private By avatar = By.xpath("//button[@id='details-user-avatar-trigger']");
     private By chooseFile = By.xpath("//input[@id='jira-avatar-uploader']");
     private By newAvatar = By.xpath("(//button[@id='select-avatar-button'])[21]");
     private By confirm = By.xpath("//input[@type='submit']");
     private By userAvatarButton = By.xpath("//button[@id='select-avatar-button']");
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public ChangeAvatar( WebDriver driver) { //
         this.driver = driver;
@@ -51,7 +50,7 @@ public class ChangeAvatar {
             e.printStackTrace();
         }
 
-        robot.delay(200);
+        robot.delay(2000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.delay(4000);

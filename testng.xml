@@ -1,16 +1,24 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="BLR_Analytics" verbose="10" parallel="tests">
+<suite name="Suite" verbose="10" parallel="tests">
+
     <listeners>
-    <listener class-name="utils.TestListener"></listener>
+    <listener class-name="utils.TestListener"/>
     </listeners>
-    <parameter name="browser" value="chrome"/>
 
     <test name="Login" group-by-instances="true" verbose="3">
+        <parameter name="browser" value="chrome"/>
+
+        <groups>
+            <dependencies>
+                <group name="smoke" depends-on="regression" />
+                <group name="feature" depends-on="smoke" />
+            </dependencies>
+        </groups>
 
         <classes>
 
-            <class name="LoginTest" />
+            <class name="ChangeAvatarTest" />
         </classes>
     </test>
 </suite>

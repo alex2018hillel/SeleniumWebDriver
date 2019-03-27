@@ -3,14 +3,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
 
- class LoginPage {
+class LoginPage {
+    static String jsessionCookie;
     private By nameField = By.xpath("//*[@id='login-form-username']");
     private By passwordField = By.xpath("//*[@id='login-form-password']");
-    final String expectedResultText = "System Dashboard1111 - Hillel IT School JIRA";
+    final String expectedResultText = "System Dashboard - Hillel IT School JIRA";
 
     WebDriver driver;
 
-     public LoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
          this.driver = driver;
      }
 
@@ -38,7 +39,7 @@ import java.util.concurrent.TimeUnit;
         return expectedResultText;
     }
 
-     void closeDriver() {
+    void closeDriver() {
         driver.close();
     }
 }
