@@ -2,19 +2,20 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import prop.PropertyReader;
 import prop.Waitings;
 import utils.DriverManager;
-import utils.TestListener;
+
 import java.io.File;
 import java.io.IOException;
+
 import static org.testng.Assert.assertEquals;
 
-    @Listeners({ TestListener.class })
+   // @Listeners({ TestListener.class })
 public class LoginTest {
     private LoginPage loginPage;
     private String password = PropertyReader.getPropertyValue("password");
@@ -23,11 +24,13 @@ public class LoginTest {
 
     WebDriver driver;
 
+
     @BeforeMethod
     public void initialize() {
-     driver = DriverManager.getDriver();     //driver = new ChromeDriver();
-     loginPage = new LoginPage(driver);
 
+    driver = DriverManager.getDriver();
+    driver = new ChromeDriver();
+    loginPage = new LoginPage(driver);
     }
 
     @Test(description = "Login JIRA")

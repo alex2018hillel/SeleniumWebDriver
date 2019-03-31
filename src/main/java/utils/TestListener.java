@@ -8,7 +8,8 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        System.out.println();
+        DriverManager.initDriver();
+        System.out.println("====  Test Start  ====");
     }
 
     @Override
@@ -41,3 +42,5 @@ public class TestListener implements ITestListener {
 
     }
 }
+
+//

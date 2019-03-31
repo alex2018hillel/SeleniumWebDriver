@@ -13,8 +13,7 @@ class LoginPage {
 
     public LoginPage(WebDriver driver) {
          this.driver = driver;
-     }
-
+    }
 
     void open(String url) {
         driver.get(url);
@@ -40,7 +39,7 @@ class LoginPage {
     }
 
     void closeDriver() {
-        driver.close();
+        driver.quit();
     }
 }
 

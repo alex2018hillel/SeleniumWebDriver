@@ -22,7 +22,7 @@ public class ChangeAvatarTest {
         loginPage = new LoginPage(driver);
         changeAvatar = new ChangeAvatar(driver);
     }
-    @Test//(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void loginTest() {
         loginPage.open(url);
         loginPage.inputUserName(username);
@@ -33,7 +33,7 @@ public class ChangeAvatarTest {
         System.out.println(actualTitle);
         assertEquals(actualTitle, loginPage.expTitle());
     }
-    @Test//(groups = {"feature"})
+    @Test(groups = {"feature"})
     public void changeAvatarTest() {
         System.out.println("===  Change Avatar Test  === ");
 

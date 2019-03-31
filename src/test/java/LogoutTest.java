@@ -1,5 +1,7 @@
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import prop.PropertyReader;
@@ -16,19 +18,20 @@ public class LogoutTest {
     private String username = PropertyReader.getPropertyValue("login");
     private String url = PropertyReader.getPropertyValue("url");
 
-    private WebDriver driver;
+    WebDriver driver;
 
     @BeforeMethod
     public void setup() {
-        driver = DriverManager.getDriver();
+        //driver = DriverManager.getDriver();
+        driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
         logoutPage = new LogoutPage(driver);
-        driver.manage().timeouts().implicitlyWait(40,SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, SECONDS);
         driver.manage().deleteAllCookies();
     }
 
     @Test
-    public void logoutTestJira() {
+    public void loginTestJira() {
         loginPage.open(url);
         loginPage.inputUserName(username);
         loginPage.inputPassword(password);
@@ -40,15 +43,13 @@ public class LogoutTest {
 
 
         LoginPage.jsessionCookie = driver.manage().getCookieNamed("JSESSIONID").getValue();
-       // Cookie ck = new Cookie("JSESSIONID", LoginPage.jsessionCookie );
+        // Cookie ck = new Cookie("JSESSIONID", LoginPage.jsessionCookie );
 
         DriverManager.closeDriver();
-        driver = DriverManager.getDriver();
-        //Waitings.delay(1000);
-        //logoutPage.clickButtonUser();
-        //Waitings.delay(1000);
-        //logoutPage.checkLogout();
-        Cookie ck = new Cookie("JSESSIONID", LoginPage.jsessionCookie );
+        //driver = DriverManager.getDriver();
+        driver = new ChromeDriver();
+
+        Cookie ck = new Cookie("JSESSIONID", LoginPage.jsessionCookie);
         driver.manage().addCookie(ck);
         System.out.println(LoginPage.jsessionCookie);
         System.out.println(ck);
@@ -62,10 +63,7 @@ public class LogoutTest {
         logoutPage.clickUserMenu();
 
 
-
-
-
-          //  int a=1;
+        //  int a=1;
         /*Cookie cookie = new Cookie("key", "value");
         driver.manage().addCookie(cookie);
 
@@ -76,11 +74,15 @@ public class LogoutTest {
 
         //Set<Cookie> cookies = driver.manage().getCookies();
         //saveToFile(new File("/path/to/file", cookies);
-       //         driver.quit();
+        //         driver.quit();
     }
 
-/*
-
+    @AfterMethod
+    public void closeDown() {
+        Waitings.delay(1000);
+        DriverManager.closeDriver();
+    }
+}/*
 
     @Override
     public void onFinish(ITestContext arg0) {
@@ -126,13 +128,7 @@ public class LogoutTest {
         // TODO Auto-generated method stub
         System.out.println("Congrates Testcase has been passed===="+ arg0.toString());
     }
-    @AfterMethod
-    public void closeDown() {
-        Waitings.delay(1000);
-        DriverManager.closeDriver();
-    }
 
-*/
 }
 
 
@@ -150,4 +146,4 @@ public class LogoutTest {
 //<version>1.6.4</version>
 //</dependency>
 
-//<parameter name="configFile" value="app.properties"></parameter>
+//<parameter name="configFile" value="app.properties"></parameter>*/

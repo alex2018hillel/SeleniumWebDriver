@@ -1,9 +1,8 @@
-
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" verbose="10" parallel="tests">
+<suite name="softwareTestingMaterial" verbose="10" parallel="tests">
 
     <listeners>
-    <listener class-name="utils.TestListener"/>
+    <listener class-name="utils.ListenerDemoExample"/>
     </listeners>
 
     <test name="Login" group-by-instances="true" verbose="3">
@@ -11,14 +10,13 @@
 
         <groups>
             <dependencies>
-                <group name="smoke" depends-on="regression" />
+                <group name="regression" depends-on="smoke" />
                 <group name="feature" depends-on="smoke" />
             </dependencies>
         </groups>
 
         <classes>
-
-            <class name="ChangeAvatarTest" />
+            <class name="LoginTest" />
         </classes>
     </test>
 </suite>
