@@ -14,116 +14,94 @@ public class ListenerDemoExample implements ITestListener, WebDriverEventListene
     public void onTestStart(ITestResult arg0) {
         // TODO Auto-generated method stub
     }
-
     @Override
     public void onStart(ITestContext arg0) {
         DriverManager.initDriver();
         System.out.println("====  Start  ====");
-
     }
-
     @Override
     public void onTestSuccess(ITestResult arg0) {
         System.out.println("====  Test Successful  ====");
-
     }
-
     @Override
     public void onTestFailure(ITestResult arg0) {
         System.out.println("====  Test Failure  ====");
-
     }
-
     @Override
     public void onTestSkipped(ITestResult arg0) {
         System.out.println("====  Test Skipped  ====");
-
     }
-
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
         System.out.println("====  Test Failed But With in Success Percentage  ====");
-
     }
-
     @Override
     public void onFinish(ITestContext arg0) {
         System.out.println("====  Finish  ====");
     }
 
-
     @Override
-    public void beforeNavigateTo(String s, WebDriver webDriver) {
-
+    public void beforeNavigateTo(String url, WebDriver driver) {
+        System.out.println("Before Navigate To: " + url + " and Current url is: " + driver.getCurrentUrl());
     }
-
     @Override
-    public void afterNavigateTo(String s, WebDriver webDriver) {
-
+    public void afterNavigateTo(String url, WebDriver driver) {
+        System.out.println("After Navigate To: " + url + " and Current url is: "+ driver.getCurrentUrl());
     }
-
     @Override
-    public void beforeNavigateBack(WebDriver webDriver) {
-
+    public void beforeNavigateBack(WebDriver driver) {
+        System.out.println("Before Navigate Back. Right now I'm at " + driver.getCurrentUrl());
     }
-
     @Override
-    public void afterNavigateBack(WebDriver webDriver) {
-
+    public void afterNavigateBack(WebDriver driver) {
+        System.out.println("After Navigate Back. Right now I'm at " + driver.getCurrentUrl());
     }
-
     @Override
-    public void beforeNavigateForward(WebDriver webDriver) {
-
+    public void beforeNavigateForward(WebDriver driver) {
+        System.out.println("Before Navigate Forward. Right now I'm at " + driver.getCurrentUrl());
     }
-
     @Override
-    public void afterNavigateForward(WebDriver webDriver) {
-
+    public void afterNavigateForward(WebDriver driver) {
+        System.out.println("After Navigate Forward. Right now I'm at " + driver.getCurrentUrl());
     }
-
     @Override
-    public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
-
+    public void beforeFindBy(By by, WebElement element, WebDriver driver) {
+        System.out.println("Before Find By Event");
     }
-
     @Override
-    public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {
-
+    public void afterFindBy(By by, WebElement element, WebDriver driver) {
+        System.out.println("After Find By Event");
     }
-
+    //////////////////// CLICK ON RELATED METHODS ///////////////
     @Override
-    public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
-
+    public void beforeClickOn(WebElement element, WebDriver driver) {
+        System.out.println("Before Click On Event");
     }
-
     @Override
-    public void afterClickOn(WebElement webElement, WebDriver webDriver) {
-
+    public void afterClickOn(WebElement element, WebDriver driver) {
+        System.out.println("After Click On Event");
     }
-
+    ///////////////// CHANGE OF VALUE RELATED METHODS //////////////
     @Override
-    public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver) {
-
+    public void beforeChangeValueOf(WebElement element, WebDriver driver) {
+        System.out.println("Before Change Value Of Event");
     }
-
     @Override
-    public void afterChangeValueOf(WebElement webElement, WebDriver webDriver) {
-
+    public void afterChangeValueOf(WebElement element, WebDriver driver) {
+        System.out.println("After Change Value Of Event");
     }
-
+    /////////////// SCRIPT EXECUTION RELATED METHODS ///////////////
     @Override
-    public void beforeScript(String s, WebDriver webDriver) {
-
+    public void beforeScript(String script, WebDriver driver) {
+        System.out.println("Before Script Event");
     }
-
     @Override
-    public void afterScript(String s, WebDriver webDriver) {
-
+    public void afterScript(String script, WebDriver driver) {
+        System.out.println("After Script Event");
     }
-
+    /////////////// EXCEPTION RELATED METHODS ///////////////////////
     @Override
-    public void onException(Throwable throwable, WebDriver webDriver) {
-
+    public void onException(Throwable throwable, WebDriver driver) {
+        System.out.println("On Exception");
     }
 }
