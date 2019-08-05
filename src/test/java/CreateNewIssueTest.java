@@ -42,19 +42,3 @@ public class CreateNewIssueTest extends InitialTestClass1 {
 }
 
 
-
-
-
-
-
-
-//private String url = "http://jira.hillel.it:8080/login.jsp";//private By passwordField = By.xpath("//*[@id='login-form-password']");
-//*[@id="login-form-submit"]
-//private String username = "Alex_Tropp";
-//private String password = "Alex_Tropp";
-//private String headName = "No description2";
-//private String description = "Proba2";
-//private By createButton = By.xpath("//*[@id=\"create_link\"]");
-//private By headNameField = By.xpath("//*[@id=\"summary\"]");
-// private By descriptionField = By.xpath("//*[@id=\"create_link\"]");
-// private By createIssueSubmitButton = By.xpath("//*[@id=\"create-issue-submit\"]");

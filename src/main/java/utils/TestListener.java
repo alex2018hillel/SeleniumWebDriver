@@ -13,6 +13,11 @@ public class TestListener implements ITestListener {
     }
 
     @Override
+    public void onFinish(ITestContext arg0) {
+        System.out.println("====  Test Successful  ====");
+    }
+
+    @Override
     public void onTestSuccess(ITestResult iTestResult) {
 
     }
@@ -37,10 +42,4 @@ public class TestListener implements ITestListener {
         DriverManager.initDriver();
     }
 
-    @Override
-    public void onFinish(ITestContext iTestContext) {
-
-    }
 }
-
-//
