@@ -9,20 +9,17 @@ import java.util.concurrent.TimeUnit;
 public class InitialTestClass extends App2 {
 
     private By nameField = By.xpath("//*[@id='login-form-username']");
-
     private By passwordField = By.xpath("//*[@id='login-form-password']");
     private String username = getDb("db_login");
     private String password = getDb("db_password");
 
-    ////private By signInButton = By.id("#id='login-form-submit'");
     private By butonTopMenu = By.xpath("//div[@class=’aui-header-primary’]//span[text()=’Create a new issue’]");
     private By inputIssueTypeField = By.xpath("//a[@class='aui-list-item-link aui-iconised-link'][contains(text(),'Test')]");
     private By inputSummaryField = By.xpath("//a[@class='aui-list-item-link aui-iconised-link'][contains(text(),'Test')]");
     private By inputDescriptionField = By.xpath("//a[@class='aui-list-item-link aui-iconised-link'][contains(text(),'Test')]");
     private By butonCreate = By.xpath("//body[@id='tinymce']//p");
-    //
+
     static WebDriver driver;
-    //private By ButonCreate;
 
     public WebDriver initializeDriver() {
         driver = new ChromeDriver();
@@ -37,7 +34,6 @@ public class InitialTestClass extends App2 {
     void open() {
         String url = getDb("db_url");
         System.out.println(url);
-        //driver.get(url);
         driver.get("http://jira.hillel.it:8080/login.jsp");
         driver.manage().window().maximize();
     }
@@ -49,13 +45,11 @@ public class InitialTestClass extends App2 {
             e.printStackTrace();
         }
     }
-    //driver, signInButton
+
     WebDriver signIn(WebDriver driver, By locator) {
         driver.findElement(locator).click();
         return driver;
     }
-
-
 
     WebDriver inputText() {
         driver.findElement(nameField).sendKeys(username, Keys.ENTER);
@@ -73,7 +67,6 @@ public class InitialTestClass extends App2 {
     }
 
     String expTitle() {
-        //String expectedValue = "System Dashboard - Hillel IT School JIRA";
         String expectedResultText = "System Dashboard - Hillel IT School JIRA";
         return expectedResultText;
     }

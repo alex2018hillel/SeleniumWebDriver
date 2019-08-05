@@ -18,25 +18,24 @@ public class CreateNewIssueTest extends InitialTestClass1 {
         open();
         inputText();
         inputPassword();
-        delay(2000);
+        delay(2);
         String actualTitle = actTitle();
         System.out.println(actualTitle);
         String expectedResultText = expectedPageJira;
-        delay(3000);
+        delay(3);
         assertEquals(actualTitle, expectedResultText);
 
         clickTopMenu();
-        delay(3000);
+
         inputIssueType();
         inputSummary();
         inputDescription();
         clickCreate();
-
     }
 
     @AfterMethod
     public void closeDown() {
-        delay(6000);
+        delay(4);
         closeDriver();
     }
 

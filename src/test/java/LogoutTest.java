@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
-public class LogoutTest extends InitialTestClass {
+public class LogoutTest extends InitialTestClass1 {
 
     @BeforeMethod
     public void setup() {
@@ -28,16 +28,7 @@ public class LogoutTest extends InitialTestClass {
 
     @AfterMethod
     public void closeDown() {
-        delay(6000);
+        delay(4);
         driver.close();
     }
 }
-
-
-
-//private String url = "http://jira.hillel.it:8080/login.jsp";
-//private By nameField = By.xpath("//*[@id=\"login-form-username\"]");
-//private By passwordField = By.xpath("//*[@id=\"login-form-password\"]");
-//private By signInButton = By.id("id=login-form-submit"); //id="login-form-submit"
-//private String username = "Alex_Tropp";
-//private String password = "Alex_Tropp1";
